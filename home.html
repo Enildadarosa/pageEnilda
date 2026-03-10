@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enilda da Rosa Cáceres - Portfólio Interativo</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Oxanium:wght@400;700&amp;display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="estilo.css">
+ </head>
+ <body>
+  <div class="main-wrapper">
+   <header>
+    <div class="header-content">
+        <div class="foto">
+            <img src="familia.png" alt="">
+
+            <p class="motto">Coragem para sonhar, coragem para recomeçar</p>
+        </div>
+     <div class="header-info">
+      <h1 class="main-title">Enilda Aparecida Mendes da Rosa Cáceres</h1>
+      <p class="subtitle">Educadora | Professora Universitária | Coordenadora Estácio | Docente Senac MS</p>
+     </div>
+     <div class="header-photo">
+  
+     </div>
+    </div>
+   </header>
+   <div class="timeline-section">
+    <div class="timeline-container" id="timelineContainer"></div>
+   </div>
+   <footer>
+    <p>© 2024 Enilda da Rosa Cáceres | Transformando vidas através da educação</p>
+   </footer>
+  </div>
+  <div class="modal" id="modal">
+   <div class="modal-content"><button class="modal-close" id="modalClose">×</button>
+    <div class="modal-header">
+     <div class="modal-year" id="modalYear"></div>
+     <div class="modal-title" id="modalTitle"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+   </div>
+   
+  </div>
+  <script>
+        // Dados dos slides
+        const slides = [
+            {
+                year: "Quem sou eu",
+                title: "Apresentação",
+                content: `
+                    <div class="header-photo">
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda Senac Estacio.png" alt="">
+      </div>
+                    <p><strong>Profa. Enilda da Rosa Cáceres</strong></p>
+                    <p><strong>Docente da Fábrica de Software – Senac MS</strong></p>
+                    <p>Treinadora das Competições Senac de Educação Profissional</p>
+                    
+                    <p><strong>Na Estácio:</strong></p>
+                    <ul>
+                        <li>Coordenadora do curso de Análise e Desenvolvimento de Sistemas</li>
+                        <li>Coordenadora do curso de Engenharia de Software</li>
+                        <li>Professora universitária</li>
+                    </ul>
+                    
+                    <p><strong>Formação:</strong></p>
+                    <ul>
+                        <li>Bacharel em Sistemas de Informação</li>
+                        <li>Pós-graduação em Engenharia de Software</li>
+                        <li>Pós-graduação em Cloud Computing</li>
+                        <li>Pós-graduação em Design Digital</li>
+                    </ul>
+                    
+                    <div class="highlight-quote">"A educação transformou minha vida — e continua transformando todos os dias."</div>
+                `
+            },
+            {
+                year: "Além do currículo",
+                title: "Quem eu sou",
+                content: `
+               
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda2.png" alt="">
+      </div>
+                    <p><strong>Antes de qualquer título, eu sou:</strong></p>
+                    <ul>
+                        <li>Mulher</li>
+                        <li>Mãe de três filhos</li>
+                        <li>Esposa há quase 26 anos</li>
+                        <li>Filha</li>
+                        <li>Amiga</li>
+                        <li>Professora apaixonada por ensinar</li>
+                    </ul>
+                    
+                    <p><strong>E também sou:</strong></p>
+                    <ul>
+                        <li>Apaixonada por tecnologia</li>
+                        <li>Alguém que acredita no potencial dos alunos</li>
+                        <li>Uma pessoa que continua aprendendo todos os dias</li>
+                    </ul>
+                    
+                    <p><strong>Hoje também sou:</strong></p>
+                    <ul>
+                        <li>📚 Caloura do curso de Administração</li>
+                    </ul>
+                    
+                    <div class="highlight-quote">"Nunca é tarde para continuar aprendendo."</div>
+                `
+            },
+            {
+                year: "Aos 12 anos",
+                title: "Tudo começou aqui",
+                content: `
+            
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda3.png" alt="">
+      </div>
+                    <p>Minha história com tecnologia começou cedo.</p>
+                    
+                    <p><strong>💻 Tive acesso ao computador aos 12 anos de idade.</strong></p>
+                    
+                    <p>Meu pai era engenheiro agrônomo, e no escritório dele havia computadores. Eu ficava curiosa:</p>
+                    <ul>
+                        <li>Mexendo</li>
+                        <li>Aprendendo</li>
+                        <li>Explorando</li>
+                    </ul>
+                    
+                    <p>Foi ali que nasceu minha paixão pela tecnologia.</p>
+                `
+            },
+            {
+                year: "Interior do MS",
+                title: "Nem sempre temos oportunidades",
+                content: `
+            
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda4.png" alt="">
+      </div>
+                    <p>Quando terminei o ensino médio, eu queria trabalhar com tecnologia.</p>
+                    
+                    <p><strong>Mas havia um problema:</strong></p>
+                    
+                    <p>📍 <strong>Eu morava no interior do Mato Grosso do Sul</strong></p>
+                    <p>Na minha cidade não existia faculdade de tecnologia.</p>
+                    
+                    <p><strong>Naquela época eu tinha certeza de três coisas:</strong></p>
+                    <ul>
+                        <li>❌ Não queria fazer contabilidade</li>
+                        <li>❌ Não queria fazer administração</li>
+                        <li>❌ Não queria ser professora</li>
+                    </ul>
+                    
+                    <p><em>(ironias da vida 😅)</em></p>
+                `
+            },
+            {
+                year: "2003 - 2004",
+                title: "Antes da universidade",
+                content: `
+                
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda12.png" alt="">
+      </div>
+                    <p>Passei alguns anos trabalhando em:</p>
+                    <ul>
+                        <li>Empresa veterinária</li>
+                        <li>Bazar</li>
+                        <li>Papelaria</li>
+                    </ul>
+                    
+                    <p><strong>Em 2003, fiz concurso público na prefeitura da minha cidade.</strong></p>
+                    <p>Fiquei em 6º lugar.</p>
+                    
+                    <p><strong>Em 2004, comecei a trabalhar na prefeitura.</strong></p>
+                `
+            },
+            {
+                year: "2005 - 2006",
+                title: "A decisão de estudar",
+                content: `
+                
+      <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda10.png" alt="">
+      </div>
+                    <p>Durante o trabalho conheci pessoas que me falaram de uma faculdade.</p>
+                    
+                    <p>Ela ficava em Paranaíba (MS).</p>
+                    <p>📍 <strong>Distância da minha cidade: 100 km</strong></p>
+                    
+                    <p>Mesmo assim, decidi tentar.</p>
+                    
+                    <ul>
+                        <li><strong>Em 2005</strong> fiz vestibular</li>
+                        <li><strong>Em 2006</strong> comecei a faculdade de Sistemas de Informação</li>
+                    </ul>
+                `
+            },
+            {
+                year: "2006 - 2009",
+                title: "Uma rotina desafiadora",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda9.png" alt="">
+      </div>
+                    <p><strong>Minha rotina durante a faculdade:</strong></p>
+                    <ul>
+                        <li>Trabalhar o dia inteiro</li>
+                        <li>Cuidar de dois filhos</li>
+                        <li>Viajar 100 km para ir</li>
+                        <li>Viajar 100 km para voltar</li>
+                    </ul>
+                    
+                    <p>Isso <strong>todos os dias</strong>. Meu curso era 100% presencial.</p>
+                    
+                    <p><strong>Mas eu tinha um objetivo:</strong></p>
+                    <p>🎓 Concluir minha graduação</p>
+                `
+            },
+            {
+                year: "Último ano",
+                title: "Gestação e formação",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda11.png" alt="">
+      </div>
+                    <p>No último ano da faculdade, aconteceu algo especial.</p>
+                    
+                    <p><strong>Eu fiquei grávida da minha terceira filha.</strong></p>
+                    
+                    <p>Minha filha <strong>Geovana</strong> literalmente fez faculdade comigo.</p>
+                    <p>Ela ia e voltava todos os dias comigo até eu concluir o curso.</p>
+                    
+                    <p><strong>Em 2009 me formei em Sistemas de Informação.</strong></p>
+                `
+            },
+            {
+                year: "2009 - 2012",
+                title: "Experiência profissional",
+                content: `
+                id="photoPlaceholder">
+       <img src="IMG/Enilda5.png" alt="">
+      </div>
+                    <p>Continuei trabalhando na prefeitura.</p>
+                    
+                    <p><strong>Durante esse período:</strong></p>
+                    <ul>
+                        <li>Fui gerente de projetos por aproximadamente 6 anos</li>
+                        <li>Fui chefe do setor de cadastro e tributação</li>
+                    </ul>
+                    
+                    <p><strong>Também trabalhei com:</strong></p>
+                    <ul>
+                        <li>Captação de recursos federais</li>
+                        <li>Gestão de projetos públicos</li>
+                        <li>Execução de obras</li>
+                        <li>Prestação de contas</li>
+                    </ul>
+                    
+                    <p>Foi uma grande escola de gestão e responsabilidade.</p>
+                `
+            },
+            {
+                year: "2012",
+                title: "Uma oportunidade de mudança",
+                content: `
+                    <p>Em 2012, meu esposo recebeu uma oportunidade de trabalho em Campo Grande.</p>
+                    
+                    <p>Eu morava em Castilândia.</p>
+                    
+                    <p>Então começamos a viver em cidades diferentes.</p>
+                    
+                    <p><strong>Mas quem casa quer estar junto.</strong></p>
+                    
+                    <p>Então precisei tomar uma decisão.</p>
+                `
+            },
+            {
+                year: "2013",
+                title: "A decisão mais corajosa",
+                content: `
+                
+                    <p>Em 2013 eu pedi licença da prefeitura.</p>
+                    
+                    <p><strong>Deixei minha estabilidade.</strong></p>
+                    
+                    <p>E me mudei para Campo Grande com:</p>
+                    <ul>
+                        <li>Meu esposo</li>
+                        <li>Meus três filhos</li>
+                        <li>Muitos sonhos</li>
+                    </ul>
+                    
+                    <p>Sem parentes na cidade. Apenas coragem e vontade de construir.</p>
+                `
+            },
+            {
+                year: "01 de Abril",
+                title: "Um novo começo",
+                content: `
+                    <p>Cheguei em Campo Grande em <strong>1º de abril de 2013.</strong></p>
+                    
+                    <p>Foi o começo de uma nova fase da minha vida.</p>
+                    
+                    <ul>
+                        <li>Nova cidade</li>
+                        <li>Novos desafios</li>
+                        <li>Novas oportunidades</li>
+                    </ul>
+                    
+                    <p>Era o começo de uma nova Enilda.</p>
+                    
+                    <p>✨ Sonhadora<br>
+                    ✨ Corajosa<br>
+                    ✨ Desafiadora</p>
+                `
+            },
+            {
+                year: "Maio de 2013",
+                title: "O encontro com a educação",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda13.png" alt="">
+      </div>
+                    <p>Em maio de 2013, surgiu uma oportunidade:</p>
+                    
+                    <p><strong>Dar aula em um curso técnico em informática.</strong></p>
+                    
+                    <p>Foi ali que aconteceu algo inesperado.</p>
+                    
+                    <p><strong>Eu me apaixonei pela educação.</strong></p>
+                `
+            },
+            {
+                year: "Descoberta",
+                title: "O que eu descobri",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda14.png" alt="">
+      </div>
+                    <p>Descobri que ensinar era algo incrível.</p>
+                    
+                    <p><strong>Eu me apaixonei por:</strong></p>
+                    <ul>
+                        <li>Ensinar</li>
+                        <li>Compartilhar conhecimento</li>
+                        <li>Desenvolver projetos</li>
+                        <li>Acompanhar o crescimento dos alunos</li>
+                    </ul>
+                    
+                    <p>Ali começou minha trajetória na educação.</p>
+                `
+            },
+            {
+                year: "Hoje",
+                title: "Minha trajetória hoje",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda15.png" alt="">
+      </div>
+                    <p><strong>Hoje atuo em diferentes espaços da educação e tecnologia:</strong></p>
+                    
+                    <p><strong>Senac MS</strong></p>
+                    <ul>
+                        <li>Docente da Fábrica de Software</li>
+                        <li>Treinadora das Competições Senac</li>
+                    </ul>
+                    
+                    <p><strong>Estácio</strong></p>
+                    <ul>
+                        <li>Coordenadora de cursos</li>
+                        <li>Professora universitária</li>
+                    </ul>
+                    
+                    <p><strong>Tudo isso começou com uma decisão:</strong></p>
+                    <p>✨ Não desistir de aprender</p>
+                `
+            },
+            {
+                year: "Reflexão",
+                title: "Uma reflexão para vocês",
+                content: `
+                
+                    <p>Não importa:</p>
+                    <ul>
+                        <li>De onde você veio</li>
+                        <li>Quantas dificuldades você teve</li>
+                        <li>Quantas vezes precisou recomeçar</li>
+                    </ul>
+                    
+                    <p><strong>O importante é continuar caminhando.</strong></p>
+                `
+            },
+           
+            {
+                year: "Transformação",
+                title: "Uma vida transformada",
+                content: `
+                    <p><strong>Hoje eu posso dizer com muita alegria:</strong></p>
+                    
+                    <p>Sou muito feliz com a profissional que me tornei.</p>
+                    
+                    <p><strong>Ao longo da minha trajetória eu conquistei:</strong></p>
+                    <ul>
+                        <li>Grandes aprendizados</li>
+                        <li>Amizades que levarei para a vida</li>
+                        <li>Oportunidades incríveis</li>
+                        <li>Crescimento profissional</li>
+                        <li>Estabilidade e qualidade de vida para minha família</li>
+                    </ul>
+                    
+                    <p><strong>A educação transformou completamente minha vida.</strong></p>
+                `
+            },
+            {
+                year: "Minha família",
+                title: "A educação transformou minha família",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="familia.png" alt="">
+      </div>
+                    <p><strong>Minhas decisões também impactaram a vida dos meus filhos.</strong></p>
+                    
+                    <p><strong>👨‍💻 João Pedro</strong><br>
+                    Formado em Análise e Desenvolvimento de Sistemas<br>
+                    Foi Sargento do Exército<br>
+                    Hoje é Analista de Dados na Pantanal Tech</p>
+                    
+                    <p><strong>🔬 Gabriela</strong><br>
+                    Formada em Estética<br>
+                    Finalizando Biomedicina<br>
+                    Já atuando na área</p>
+                    
+                    <p><strong>🎓 Giovana</strong><br>
+                    Cursando o 3º ano do ensino médio<br>
+                    Estudante da Fábrica de Software</p>
+                    
+                    <div class="highlight-quote">"A educação abriu portas para toda a minha família."</div>
+                `
+            },
+            {
+                year: "Realidade",
+                title: "Foi fácil?",
+                content: `
+                    <p><strong>Não.</strong></p>
+                    <p><strong>Não foi fácil.</strong></p>
+                    
+                    <p><strong>Durante essa jornada existiram:</strong></p>
+                    <ul>
+                        <li>Medos</li>
+                        <li>Inseguranças</li>
+                        <li>Desafios</li>
+                        <li>Momentos de dúvida</li>
+                    </ul>
+                    
+                    <p><strong>Mas uma coisa sempre foi mais forte:</strong></p>
+                    <p>✨ A vontade de continuar</p>
+                `
+            },
+            {
+                year: "Aprendizado",
+                title: "O que faz a diferença",
+                content: `
+                    <p><strong>Ao longo da vida eu aprendi que algumas coisas fazem toda a diferença:</strong></p>
+                    <ul>
+                        <li>Estudar sempre</li>
+                        <li>Não desistir</li>
+                        <li>Acreditar nos seus sonhos</li>
+                        <li>Trabalhar com dedicação</li>
+                        <li>Aprender com os erros</li>
+                    </ul>
+                    
+                    <p><strong>Quando a gente não desiste, as coisas começam a acontecer.</strong></p>
+                `
+            },
+            {
+                year: "Realização",
+                title: "Realização profissional",
+                content: `
+                    <p>Hoje eu me sinto realizada profissionalmente.</p>
+                    
+                    <p><strong>Mas também sei que ainda existem:</strong></p>
+                    <ul>
+                        <li>Novos sonhos</li>
+                        <li>Novos objetivos</li>
+                        <li>Novos desafios</li>
+                    </ul>
+                    
+                    <p><strong>A vida é um processo constante de evolução.</strong></p>
+                `
+            },
+            {
+                year: "Recompensa",
+                title: "A maior recompensa de um professor",
+                content: `
+                    <p>Uma das maiores alegrias da minha profissão é ver meus alunos crescerem.</p>
+                    
+                    <p><strong>Ver meus alunos:</strong></p>
+                    <ul>
+                        <li>Entrando no mercado de trabalho</li>
+                        <li>Evoluindo profissionalmente</li>
+                        <li>Conquistando bons salários</li>
+                        <li>Construindo suas carreiras</li>
+                    </ul>
+                    
+                    <p>E às vezes receber uma mensagem de um aluno dizendo:</p>
+                    
+                    <div class="highlight-quote">"Professora, obrigado por acreditar em mim."</div>
+                    
+                    <p><strong>Isso não tem preço.</strong></p>
+                `
+            },
+            {
+                year: "Sonho Senac",
+                title: "Um sonho chamado Senac",
+                content: `
+                
+                    <p>Entrar no Senac sempre foi um sonho para mim.</p>
+                    
+                    <p><strong>Mas não foi fácil.</strong></p>
+                    
+                    <p>Eu participei de <strong>sete processos seletivos.</strong></p>
+                    
+                    <p>Sete tentativas.</p>
+                    <p>Sete oportunidades de tentar novamente.</p>
+                    
+                    <p><strong>E eu nunca desisti.</strong></p>
+                `
+            },
+            {
+                year: "Oportunidade",
+                title: "A oportunidade certa",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda17.png" alt="">
+      </div>
+                    <p>Eu sempre pedia a Deus:</p>
+                    
+                    <p><strong>Que quando a oportunidade chegasse, fosse a oportunidade certa.</strong></p>
+                    
+                    <p>Um lugar onde eu pudesse:</p>
+                    <ul>
+                        <li>Contribuir</li>
+                        <li>Desenvolver pessoas</li>
+                        <li>Ajudar a transformar vidas</li>
+                    </ul>
+                    
+                    <p>E quando passei no processo seletivo do Senac…</p>
+                    
+                    <p><strong>Era exatamente a vaga que combinava comigo.</strong></p>
+                `
+            },
+            {
+                year: "5+ anos",
+                title: "Gratidão",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda18.png" alt="">
+      </div>
+                    <p>Hoje tenho mais de 5 anos no Senac.</p>
+                    
+                    <p><strong>E sou profundamente grata por:</strong></p>
+                    <ul>
+                        <li>Todas as oportunidades</li>
+                        <li>Todos os aprendizados</li>
+                        <li>Todas as pessoas que conheci</li>
+                        <li>Todos os projetos que participei</li>
+                    </ul>
+                    
+                    <p><strong>O Senac foi uma grande virada de chave na minha vida profissional.</strong></p>
+                `
+            },
+            {
+                year: "Conselho",
+                title: "Uma mensagem para vocês",
+                content: `
+                <div class="photo-placeholder" id="photoPlaceholder">
+       <img src="IMG/Enilda16.png" alt="">
+      </div>
+                    <p><strong>Se eu pudesse deixar uma mensagem para vocês hoje seria:</strong></p>
+                    
+                    <p>✨ <strong>Não desistam dos seus sonhos.</strong></p>
+                    
+                    <p>Tentem.</p>
+                    <p>Tentem novamente.</p>
+                    <p>E se não der certo, façam diferente e tentem outra vez.</p>
+                `
+            },
+            {
+                year: "Essência",
+                title: "Fé, esforço e perseverança",
+                content: `
+                    <p><strong>Ao longo da vida eu aprendi que três coisas caminham juntas:</strong></p>
+                    
+                    <p>🙏 <strong>Fé</strong><br>
+                    📚 <strong>Esforço</strong><br>
+                    💪 <strong>Perseverança</strong></p>
+                    
+                    <p>Às vezes achamos que um caminho seria o melhor.</p>
+                    <p>Mas a vida nos leva por outro.</p>
+                    
+                    <p><strong>E muitas vezes esse outro caminho é exatamente onde deveríamos estar.</strong></p>
+                `
+            },
+            {
+                year: "Encerramento",
+                title: "Encerramento",
+                content: `
+                    <p><strong>Hoje eu posso dizer com muita gratidão:</strong></p>
+                    
+                    <p>A educação não transformou apenas a minha vida.</p>
+                    
+                    <p><strong>Transformou:</strong></p>
+                    <ul>
+                        <li>A vida da minha família</li>
+                        <li>A vida dos meus filhos</li>
+                        <li>A vida de muitos alunos que passaram por mim</li>
+                    </ul>
+                    
+                    <p>E isso me faz ter certeza de uma coisa:</p>
+                    
+                    <p>✨ <strong>Eu escolhi o caminho certo.</strong></p>
+                `
+            }
+        ];
+
+        // Renderizar timeline vertical com detalhes
+        const timelineContainer = document.getElementById('timelineContainer');
+        
+        slides.forEach((slide, index) => {
+            const item = document.createElement('div');
+            item.className = 'timeline-item';
+            
+            const dot = document.createElement('div');
+            dot.className = 'timeline-dot';
+            dot.addEventListener('click', () => openModal(slide, dot));
+            
+            const content = document.createElement('div');
+            content.className = 'timeline-content';
+            
+            // Extrair descrição curta do conteúdo
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = slide.content;
+            let description = '';
+            const pElements = tempDiv.querySelectorAll('p');
+            if (pElements.length > 0) {
+                description = pElements[0].textContent.substring(0, 100);
+                if (pElements[0].textContent.length > 100) {
+                    description += '...';
+                }
+            }
+            
+            // Tags baseadas no título
+            let tags = [];
+            if (slide.title.includes('Mulher')) tags = ['👩 Feminilidade', '💪 Força'];
+            else if (slide.title.includes('família')) tags = ['👨‍👩‍👧‍👦 Família', '❤️ Amor'];
+            else if (slide.title.includes('Senac')) tags = ['🎓 Senac', '📚 Oportunidade'];
+            else if (slide.title.includes('faculdade')) tags = ['🎓 Educação', '📚 Estudo'];
+            else if (slide.title.includes('Campo Grande')) tags = ['🏙️ Nova Cidade', '🚀 Recomeço'];
+            else if (slide.title.includes('tecnologia') || slide.title.includes('computador')) tags = ['💻 Tecnologia', '🔧 Inovação'];
+            else if (slide.title.includes('professor') || slide.title.includes('ensinar') || slide.title.includes('educação')) tags = ['🎓 Educação', '👨‍🏫 Ensino'];
+            else tags = ['📖 Memória', '✨ História'];
+            
+            const tagsHTML = tags.map(tag => `<span class="timeline-tag">${tag}</span>`).join('');
+            
+            content.innerHTML = `
+                <div class="timeline-header">
+                    <div class="timeline-number">#${index + 1}</div>
+                    <div class="timeline-year">${slide.year}</div>
+                </div>
+                <div class="timeline-title">${slide.title}</div>
+                <div class="timeline-description">${description}</div>
+                <div class="timeline-tags">${tagsHTML}</div>
+            `;
+            content.addEventListener('click', () => openModal(slide, dot));
+            
+            item.appendChild(dot);
+            item.appendChild(content);
+            timelineContainer.appendChild(item);
+        });
+
+        // Modal functions
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(slide, dot) {
+            document.getElementById('modalYear').textContent = slide.year;
+            document.getElementById('modalTitle').textContent = slide.title;
+            document.getElementById('modalBody').innerHTML = slide.content;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Atualizar estado ativo
+            document.querySelectorAll('.timeline-dot.active').forEach(el => {
+                el.classList.remove('active');
+            });
+            if (dot) {
+                dot.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.querySelectorAll('.timeline-dot.active').forEach(el => {
+                el.classList.remove('active');
+            });
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d9fa06fb6eb3421',t:'MTc3MzExNzQ3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
